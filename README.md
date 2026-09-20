@@ -102,7 +102,3 @@ Pluggable architecture: SDK for Python, CLI for interactive use, MCP server for 
 - LinkedIn: https://www.linkedin.com/in/achref-ferjani-480a90355/
 - Location: Tunisia
 - Available for: DevOps, DevSecOps, and Software Engineering roles
-
----
-
-*Portfolio updated September 2026. Built and maintained with CI, tests, and honest documentation.*
