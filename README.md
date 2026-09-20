@@ -1,7 +1,4 @@
-![](https://img.shields.io/badge/DevOps-CI/CD%2C+IaC%2C+Observability-0097FF?style=flat&logo=github-actions&logoColor=white&color=0097FF)
-![](https://img.shields.io/badge/DevSecOps-OMG%2C+Detection%2C+Pentest-FF4500?style=flat&logo=shield&logoColor=white&color=FF4500)
-![](https://img.shields.io/badge/SWE-Python%2C+Testing%2C+Architecture-3776AB?style=flat&logo=python&logoColor=white&color=3776AB)
-![](https://img.shields.io/badge/Student-ISSATM+Bizerte-888?style=flat&logo=school&logoColor=white)
+<img src="assets/banner.svg" alt="Achref Ferjani  DevOps, DevSecOps, Software Engineering" width="100%">
 
 ---
 
@@ -9,64 +6,103 @@
 
 **DevOps  •  DevSecOps  •  Software Engineering**
 
-I build and harden automated systems — CI/CD pipelines that catch vulnerabilities before merge, detection rules that fire on real attacks, and Python infrastructure that multiple agents share. Student at **ISSATM Bizerte, Tunisia**.
+Student at **ISSATM Bizerte, Tunisia**. I build and harden automated systems — CI/CD pipelines that catch vulnerabilities before merge, detection rules that fire on real attacks, and Python infrastructure that multiple agents share.
 
 Looking for opportunities in DevOps, DevSecOps, or software engineering roles.
 
 ---
 
-## How to read this profile
+## How my projects connect
 
-My work spans three tracks. Each has its own project table below — click through for READMEs, tests, and CI status.
+```mermaid
+flowchart LR
+    subgraph Detection_Engineering
+        sigma[sigma-lab<br/>4 Sigma rules<br/>green-check harness]
+        soc[03-cloud-soc-detection-lab<br/>simulate attacks<br/>run Sigma rules<br/>verify alerts fire]
+    end
 
-| Track | What I do | Proof |
-|-------|-----------|-------|
-| **DevOps** | CI/CD as code, IaC scanning, monitoring tooling, zero-dep utilities | green CI badges, test suites |
-| **DevSecOps** | Pipeline security gates, JWT auditing, SOC detection, vuln autograding, purple-team exercises | live alerts, scored reports, OWASP coverage |
-| **Software Engineering** | Python systems with clean architecture, pluggable designs, test-first development | 40+ test suites, documented APIs, real users |
+    subgraph Pipeline_Security
+        jwt[02-jwt-audit-tool<br/>JWT security audit CLI<br/>exit-code gates]
+        pipeline[01-devsecops-pipeline<br/>Gitleaks + Semgrep<br/>Trivy + tfsec<br/>CI/CD as code]
+    end
 
----
+    subgraph Vulnerability_Research
+        eg[evidence-guardian<br/>AI-native scanner<br/>SSRF / IDOR / XSS / SQLi<br/>evidence-backed reports]
+    end
 
-## DevOps
+    sigma --> soc
+    jwt -. designed for CI gates .-> pipeline
+    eg --> eg_report[evidence-backed<br/>reports & PoC scripts]
+```
 
-*Pipelines, infrastructure, observability, and the tooling that keeps systems running.*
-
-| Project | What it does | Tech |
-|---------|-------------|------|
-| [**01-devsecops-pipeline**](https://github.com/cy1ingachref/01-devsecops-pipeline) | Full CI/CD security pipeline as code — Gitleaks, Semgrep, Trivy, tfsec on every push/PR. Includes a cross-project JWT gate that proves the pipeline and auditor work together. | GitHub Actions, Docker, Semgrep, Trivy, tfsec, gitleaks |
-| [**tn-watch**](https://github.com/cy1ingachref/tn-watch) | Zero-dependency change/digest monitor for RSS, JSON, and HTML feeds. Dedupe + green-check reporting. Built for scripting and cron. | Python, zero deps |
-| [**one-mind**](https://github.com/cy1ingachref/one-mind) | Shared memory layer for AI agents — SQLite + threaded HTTP daemon + MCP server. BM25 retrieval, provenance tracking, garbage collection. Multiple agents on one project share context across sessions. | Python, SQLite, MCP, BM25, 40+ tests |
-
----
-
-## DevSecOps
-
-*Security scanning, detection engineering, authorized testing, and proving vulnerabilities with evidence.*
-
-| Project | What it does | Tech |
-|---------|-------------|------|
-| [**evidence-guardian**](https://github.com/cy1ingachref/evidence-guardian) | AI-native security research framework. Scans web apps for SSRF, IDOR, XSS, SQLi, open redirect, sensitive data, misconfiguration, and more. Every finding carries a reproducible evidence chain — HTTP request/response pairs, PoC scripts, self-contained HTML reports. OmniRoute routes across 9 free AI providers with failover. | Python, 9 AI providers, 17 tests |
-| [**01-devsecops-pipeline**](https://github.com/cy1ingachref/01-devsecops-pipeline) | CI/CD security pipeline with a cross-project JWT gate — the same pipeline that scans for secrets and CVEs also runs the JWT auditor on a weak sample token and fails the build if the HIGH finding isn't caught. | GitHub Actions, JWT audit integration |
-| [**02-jwt-audit-tool**](https://github.com/cy1ingachref/02-jwt-audit-tool) | JWT security audit CLI — detects alg:none attacks, cracks weak secrets, tests expiry abuse, validates audience/issuer claims. Exit codes integrate into CI gates. | Python, PyJWT |
-| [**03-cloud-soc-detection-lab**](https://github.com/cy1ingachref/03-cloud-soc-detection-lab) | Cloud SOC detection lab — simulate atomic attacks (brute-force, impossible travel), run detection rules, verify alerts fire with live proof. | Python, Sigma rules, Docker |
-| [**04-vuln-app-autograder**](https://github.com/cy1ingachref/04-vuln-app-autograder) | Vulnerability app autograder — runs OWASP Top 10 checks against a target application and produces a scored report. Built for grading student apps and self-assessment. | Python, OWASP Top 10 |
-| [**05-purple-team-gym**](https://github.com/cy1ingachref/05-purple-team-gym) | Purple-team exercise gym — simulated attacker/defender loops with a live dashboard showing posture scores and technique coverage. | Python, HTML dashboard |
-| [**sigma-lab**](https://github.com/cy1ingachref/sigma-lab) | Sigma detection lab — 4 detection rules (auth brute-force, impossible travel, SSRF, data exfiltration) with a green-check harness that proves each rule fires. | Sigma, Python, YAML |
-| [**netmon-lan-monitor**](https://github.com/cy1ingachref/netmon-lan-monitor) | Cyberpunk LAN monitor + blue/red defense console (Windows-first). Continuous packet scan, MAC-primary device recognition, gated whole-LAN ARP-spoof for authorized red-team exercises. 45/45 tests. | Python, scapy, Windows |
+The JWT auditor (02) is designed to plug into CI pipeline gates like 01. Sigma rules from sigma-lab feed the detection engine in 03. evidence-guardian produces self-contained evidence bundles for every finding.
 
 ---
 
-## Software Engineering
+## Featured projects
 
-*Clean, tested Python systems — pluggable architectures, shared infrastructure, and tools built to be used.*
+### 01-devsecops-pipeline — DevSecOps CI/CD as code
 
-| Project | What it does | Tech |
-|---------|-------------|------|
-| [**one-mind**](https://github.com/cy1ingachref/one-mind) | Shared memory layer for AI agents — pluggable architecture with SDK, CLI, MCP server, and daemon mode. BM25 retrieval, TTL-based expiry, provenance (agent_id), garbage collection. Zero external dependencies. | Python, SQLite, MCP, BM25, 40+ tests |
-| [**mastermind**](https://github.com/cy1ingachref/mastermind) | Multi-agent orchestration — pick a lead AI to decompose tasks, delegate to other agents, and aggregate results. Built for coordinating multiple AI agents on a single workflow. | Python |
-| [**bcrypt-5digit-cracker**](https://github.com/cy1ingachref/bcrypt-5digit-cracker) | Educational demo — brute-force a bcrypt hash to recover a 5-digit numeric PIN. Includes both a working in-browser cracker (Web Worker) and a Python CLI. Clean separation of concerns, tested. | Python, JavaScript, Web Workers |
-| [**netmon-lan-monitor**](https://github.com/cy1ingachref/netmon-lan-monitor) | Production-grade LAN monitor — continuous packet capture, MAC-primary device recognition, ARP-spoof capability gated behind authorization checks. Windows-first, 45/45 tests, real-world red-team/bule-team use. | Python, scapy, Windows API |
-| [**tn-watch**](https://github.com/cy1ingachref/tn-watch) | Zero-dependency monitoring utility — watches RSS, JSON, and HTML endpoints for changes, deduplicates, and reports. Built as a clean Python CLI with no external packages. | Python, zero deps |
+[![CI](https://github.com/cy1ingachref/01-devsecops-pipeline/actions/workflows/security.yml/badge.svg)](https://github.com/cy1ingachref/01-devsecops-pipeline/actions/workflows/security.yml)
+
+A full CI/CD security pipeline that runs on every push and pull request. Gitleaks catches leaked secrets, Semgrep finds SAST issues, Trivy scans container images and filesystems for CVEs, and tfsec checks Terraform for misconfigurations — all before code reaches production. A consolidated dashboard gives a single view across all tools.
+
+The pipeline includes a cross-project JWT gate: it invokes the 02-jwt-audit-tool on a weak sample token and fails the build if the HIGH finding isn't caught. This proves the scanner and the pipeline work together, not in isolation.
+
+Built with GitHub Actions, Docker, and Python. Zero external dependencies where practical.
+
+[→ Repo](https://github.com/cy1ingachref/01-devsecops-pipeline) · [README](https://github.com/cy1ingachref/01-devsecops-pipeline/blob/main/README.md)
+
+---
+
+### evidence-guardian — AI-native security research framework
+
+[![CI](https://github.com/cy1ingachref/evidence-guardian/actions/workflows/ci.yml/badge.svg)](https://github.com/cy1ingachref/evidence-guardian/actions/workflows/ci.yml) &nbsp; [![Tests](https://img.shields.io/badge/tests-17%20passed-brightgreen)](https://github.com/cy1ingachref/evidence-guardian) &nbsp; [![OmniRoute](https://img.shields.io/badge/AI-9%20free%20providers-ff69b4)](https://github.com/cy1ingachref/evidence-guardian)
+
+Most AI security tools hallucinate findings with no proof. evidence-guardian takes a different approach: **every finding must carry verifiable evidence. No proof, no claim.**
+
+Point it at a web app and it scans for SSRF, IDOR, XSS, SQL injection, open redirect, sensitive data exposure, misconfiguration, and more. For each finding it autonomously generates working proofs — actual HTTP request/response pairs, PoC scripts, and self-contained evidence bundles you can hand to a developer or include in a report.
+
+OmniRoute routes LLM requests across 9 free AI providers (Ollama, Groq, Nous, Together, OpenRouter, Fireworks, Mistral, DeepInfra, HuggingFace) with automatic failover. No paid APIs required.
+
+17 tests passed. MIT licensed.
+
+[→ Repo](https://github.com/cy1ingachref/evidence-guardian) · [README](https://github.com/cy1ingachref/evidence-guardian/blob/main/README.md)
+
+---
+
+### one-mind — Shared memory layer for AI agents
+
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/) &nbsp; [![SQLite](https://img.shields.io/badge/SQLite-embedded-FFCC00?style=flat&logo=sqlite&logoColor=black)](https://www.sqlite.org/) &nbsp; [![MCP](https://img.shields.io/badge/MCP-server-8957E9?style=flat&logo=anthropic&logoColor=white)](https://modelcontextprotocol.io/)
+
+A shared memory layer that lets multiple AI agents on the same project share context across sessions. Each agent writes and reads from a common SQLite store, with BM25-ranked retrieval so relevant past context surfaces automatically. Every entry carries provenance (which agent wrote it), TTL-based expiry, and garbage collection so the store stays clean.
+
+Pluggable architecture: SDK for Python, CLI for interactive use, MCP server for LLM tool integration, and a threaded daemon mode for background operation. Zero external dependencies — stdlib and SQLite only.
+
+53 tests across 2 test files. No CI workflow configured yet — planned on the roadmap.
+
+[→ Repo](https://github.com/cy1ingachref/one-mind) · [README](https://github.com/cy1ingachref/one-mind/blob/main/README.md)
+
+---
+
+## All projects
+
+<details>
+<summary>Click to expand — 8 more projects</summary>
+
+| Project | Track | What it does | CI |
+|---------|-------|-------------|-----|
+| [**02-jwt-audit-tool**](https://github.com/cy1ingachref/02-jwt-audit-tool) | DevSecOps | JWT security audit CLI — detects alg:none, cracks weak HMAC secrets, tests expiry abuse, validates audience/issuer claims. Exit codes designed for CI gate integration. | [test-ci.yml](https://github.com/cy1ingachref/02-jwt-audit-tool/actions/workflows/test-ci.yml/badge.svg) |
+| [**03-cloud-soc-detection-lab**](https://github.com/cy1ingachref/03-cloud-soc-detection-lab) | DevSecOps | Cloud SOC detection lab — simulate atomic attacks (auth brute-force, impossible travel), run Sigma detection rules, verify alerts fire with proof. Docker Compose + Python. | [ci.yml](https://github.com/cy1ingachref/03-cloud-soc-detection-lab/actions/workflows/ci.yml/badge.svg) |
+| [**04-vuln-app-autograder**](https://github.com/cy1ingachref/04-vuln-app-autograder) | DevSecOps | Vulnerability app autograder — runs OWASP Top 10 checks against a target application and produces a scored report. Built for grading student apps and self-assessment. | — |
+| [**05-purple-team-gym**](https://github.com/cy1ingachref/05-purple-team-gym) | DevSecOps | Purple-team simulation — an adaptive RED attacker and BLUE defender coevolve over 200 rounds, learning against each other until measurable equilibrium. Live posture dashboard. | [ci.yml](https://github.com/cy1ingachref/05-purple-team-gym/actions/workflows/ci.yml/badge.svg) |
+| [**sigma-lab**](https://github.com/cy1ingachref/sigma-lab) | DevSecOps | Sigma detection lab — 4 detection rules (auth brute-force, impossible travel, SSRF probe, data exfiltration) with a green-check harness that proves each rule fires against real simulation data. | [test.yml](https://github.com/cy1ingachref/sigma-lab/actions/workflows/test.yml/badge.svg) |
+| [**mastermind**](https://github.com/cy1ingachref/mastermind) | SWE | Multi-agent orchestration — a lead AI decomposes a task, delegates to worker agents, and aggregates results. Built for coordinating multiple LLMs on a single complex workflow. | — |
+| [**bcrypt-5digit-cracker**](https://github.com/cy1ingachref/bcrypt-5digit-cracker) | SWE | Educational security demo — brute-force a bcrypt hash to recover a 5-digit numeric PIN. Web Worker-based in-browser cracker + Python CLI. Clean architecture, tested. | [ci.yml](https://github.com/cy1ingachref/bcrypt-5digit-cracker/actions/workflows/ci.yml/badge.svg) |
+| [**netmon-lan-monitor**](https://github.com/cy1ingachref/netmon-lan-monitor) | DevOps | LAN monitor + blue/red defense console (Windows-first). Continuous packet capture, MAC-primary device recognition, authorized ARP-spoof for red-team exercises. 45 tests. | [ci.yml](https://github.com/cy1ingachref/netmon-lan-monitor/actions/workflows/ci.yml/badge.svg) |
+| [**tn-watch**](https://github.com/cy1ingachref/tn-watch) | DevOps | Zero-dependency change/digest monitor for RSS, JSON, and HTML feeds. Deduplicates and reports diffs. Clean Python CLI designed for cron and scripting — no external packages. | [ci.yml](https://github.com/cy1ingachref/tn-watch/actions/workflows/ci.yml/badge.svg) |
+
+</details>
 
 ---
 
@@ -95,6 +131,8 @@ My work spans three tracks. Each has its own project table below — click throu
 ## Connect
 
 - GitHub: [@cy1ingachref](https://github.com/cy1ingachref)
+- Email: `<!-- TODO: add email -->`
+- LinkedIn: `<!-- TODO: add LinkedIn URL -->`
 - Location: Tunisia
 - Available for: DevOps, DevSecOps, and Software Engineering roles
 
