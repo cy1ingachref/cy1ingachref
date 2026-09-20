@@ -57,8 +57,8 @@ Looking for opportunities in DevOps, DevSecOps, or software engineering roles.
 ## Connect
 
 - GitHub: [@cy1ingachref](https://github.com/cy1ingachref)
-- Email: `<!-- TODO: add email -->`
-- LinkedIn: `<!-- TODO: add LinkedIn URL -->`
+- Email: cy1ingachref@gmail.com
+- LinkedIn: https://www.linkedin.com/in/achref-ferjani-480a90355/
 - Location: Tunisia
 - Available for: DevOps, DevSecOps, and Software Engineering roles
 
